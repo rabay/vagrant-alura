@@ -1,0 +1,7 @@
+
+Vagrant and Hyper-V
+https://docs.microsoft.com/en-us/virtualization/community/team-blog/2017/20170706-vagrant-and-hyper-v-tips-and-tricks
+
+vagrant init hashicorp/bionic64
+vagrant box add hashicorp/bionic64 --provider=hyperv
+vagrant up --provider=hyperv
