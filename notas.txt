@@ -1,7 +1,24 @@
 
 Vagrant and Hyper-V
 https://docs.microsoft.com/en-us/virtualization/community/team-blog/2017/20170706-vagrant-and-hyper-v-tips-and-tricks
+https://heywoodonline.com/posts/Getting%20Started%20with%20Vagrant%20on%20Hyper-V.html
 
 vagrant init hashicorp/bionic64
 vagrant box add hashicorp/bionic64 --provider=hyperv
 vagrant up --provider=hyperv
+
+SSH com certificado
+https://support.rackspace.com/how-to/logging-in-with-an-ssh-private-key-on-linuxmac/
+
+Powershell on Linux
+https://linuxhint.com/install_powershell_centos/
+
+
+
+
+
+
+------- VAGRANT -------
+
+Configure public networks
+https://www.vagrantup.com/docs/networking/public_network.html
