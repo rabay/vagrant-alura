@@ -2,6 +2,7 @@
 Vagrant and Hyper-V
 https://docs.microsoft.com/en-us/virtualization/community/team-blog/2017/20170706-vagrant-and-hyper-v-tips-and-tricks
 https://heywoodonline.com/posts/Getting%20Started%20with%20Vagrant%20on%20Hyper-V.html
+https://superuser.com/questions/1354658/hyperv-static-ip-with-vagrant
 
 vagrant init hashicorp/bionic64
 vagrant box add hashicorp/bionic64 --provider=hyperv
