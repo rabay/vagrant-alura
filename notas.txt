@@ -30,3 +30,5 @@ export VAGRANT_DEFAULT_PROVIDER="hyperv"
 export VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH="/c/Users/vrabay/"
 
 https://github.com/deluxebrain/wsl-vagrant-hyperv-setup
+
+ssh -i chave_rsa vagrant@192.168.1.67
