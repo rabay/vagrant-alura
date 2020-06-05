@@ -9,6 +9,12 @@ Vagrant.configure("2") do |config|
   #   trigger.run = {privileged: "true", powershell_elevated_interactive: "true", path: "./set-hyperv-switch.ps1"}
   # end
 
+  $script_mysql = <<-SCRIPT
+    apt-get update && \
+    apt-get install -y mysql-server-5.7 && \
+    mysql -e "create user 'phpuser'@'%' identified by 'pass';"
+  SCRIPT
+
   config.vm.box_check_update = false
   config.vm.box = "bento/ubuntu-16.04"
   config.vm.provider "hyperv"
@@ -25,13 +31,24 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "shell", inline: <<-SHELL
-    sudo apt-get update
-    sudo apt-get install -y nginx
-    sudo systemctl status nginx
-    sudo systemctl enable nginx
-    sudo systemctl start nginx
-    sudo ufw allow 'Nginx Full'
+    apt-get update
+    apt-get install -y nginx
+    systemctl status nginx
+    systemctl enable nginx
+    systemctl start nginx
+    ufw allow 'Nginx Full'
+    cat /vagrant/chave_rsa.pub >> ~/.ssh/authorized_keys
   SHELL
+
+  config.vm.provision "shell", inline: $script_mysql
+
+  config.vm.provision "shell",
+    inline: "cat /vagrant/mysqld.cnf > /etc/mysql/mysql.conf.d/mysqld.cnf"
+  config.vm.provision "shell",
+    inline: "service mysql restart"
+
+  # config.vm.synced_folder "./configs", "/configs"
+  config.vm.synced_folder ".", "/vagrant", disabled: true
 
   # config.vm.provision "shell", path: "./configure-static-ip.sh"
   # config.vm.provision :reload
